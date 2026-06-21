@@ -1,0 +1,248 @@
+{
+  "products": {
+    "cameras": [
+      {
+        "id": 1,
+        "name": "Wyze Cam v4",
+        "description": "The clearest Wyze Cam ever made.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Cam v4.png",
+        "originalPrice": 35.98,
+        "discountPrice": 27.98,
+        "discountPercent": "Save 22%",
+        "colors": [
+          {
+            "id": "white",
+            "label": "White",
+            "image": "/src/assets/images/1-white.png"
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "image": "/src/assets/images/1-black.png"
+          },
+          {
+            "id": "gray",
+            "label": "Gray",
+            "image": "/src/assets/images/1-gray.png"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Wyze Cam Pan v3",
+        "description": "360° pan and 180° tilt security camera.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Cam Pan v3.png",
+        "originalPrice": 39.98,
+        "discountPrice": 34.98,
+        "discountPercent": "Save 12%",
+        "colors": [
+          {
+            "id": "white",
+            "label": "White",
+            "image": "/src/assets/images/2-white.png"
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "image": "/src/assets/images/2-black.png"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Wyze Cam Floodlight v2",
+        "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Cam Floodlight v2.png",
+        "originalPrice": 89.98,
+        "discountPrice": 69.98,
+        "discountPercent": "Save 22%",
+        "colors": [
+          {
+            "id": "white",
+            "label": "White",
+            "image": "/src/assets/images/Wyze Cam Floodlight v2.png"
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "image": "/src/assets/images/3-black.png"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Wyze Duo Cam Doorbell",
+        "description": "Two cameras. Two views. Double the porch protection.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Duo Cam Doorbell.png",
+        "originalPrice": 69.98
+      },
+      {
+        "id": 5,
+        "name": "Wyze Battery Cam Pro",
+        "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Battery Cam Pro.png",
+        "originalPrice": 89.98,
+        "colors": [
+          {
+            "id": "white",
+            "label": "White",
+            "image": "/src/assets/images/Wyze Battery Cam Pro.png"
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "image": "/src/assets/images/5-black.png"
+          }
+        ]
+      }
+    ],
+
+    "plan": [
+      {
+        "id": 6,
+        "name": "Cam Unlimited",
+        "description": "Unlimited cloud storage and AI detection for every camera on your account.",
+        "learnMoreUrl": "#",
+        "originalPrice": 12.99,
+        "discountPrice": 9.99,
+        "discountPercent": "Save 25%"
+      },
+      {
+        "id": 7,
+        "name": "Cam Plus",
+        "description": "14-day cloud storage and smart detection for a single camera.",
+        "learnMoreUrl": "#",
+        "originalPrice": 4.99
+      },
+      {
+        "id": 8,
+        "name": "Basic Plan",
+        "description": "12-hour event history with basic motion alerts. No subscription required.",
+        "learnMoreUrl": "#",
+        "originalPrice": 0,
+          "discountPercent": "Free"
+      }
+    ],
+
+    "sensors": [
+      {
+        "id": 9,
+        "name": "Wyze Sense Motion Sensor",
+        "description": "Detects motion and triggers your connected cameras and alerts.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
+        "originalPrice": 29.99
+      },
+      {
+        "id": 10,
+        "name": "Wyze Sense Hub (Required)",
+        "description": "Connects all your sensors to the Wyze app.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Sense Hub.png",
+        "originalPrice": 29.92,
+        "discountPrice": 0,
+        "discountPercent": "Free"
+
+      },
+      {
+        "id": 11,
+        "name": "Wyze Sense Entry Sensor",
+        "description": "Know the moment a door or window opens.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
+        "originalPrice": 29.98
+      },
+      {
+        "id": 12,
+        "name": "Wyze Leak Sensor",
+        "description": "Get notified the instant water is detected.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
+        "originalPrice": 24.99
+      }
+    ],
+
+    "extraProtection": [
+      {
+        "id": 13,
+        "name": "Wyze MicroSD Card (256GB)",
+        "description": "Local backup storage for your cameras.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/memoryCard.png",
+        "originalPrice": 20.98
+      },
+      {
+        "id": 14,
+        "name": "Wyze Lock Bolt",
+        "description": "A smart deadbolt that fits your existing door.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/memoryCard.png",
+        "originalPrice": 79.99,
+        "colors": [
+          {
+            "id": "silver",
+            "label": "Silver",
+            "image": "/images/lock-bolt-silver.png"
+          },
+          {
+            "id": "black",
+            "label": "Black",
+            "image": "/images/lock-bolt-black.png"
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "name": "Wyze Outdoor Plug",
+        "description": "Control floodlights and outdoor devices from your phone.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/memoryCard.png",
+        "originalPrice": 24.98
+      },
+      {
+        "id": 16,
+        "name": "Wyze Video Doorbell Chime",
+        "description": "Hear every doorbell ring, even when your phone's out of reach.",
+        "learnMoreUrl": "#",
+        "image": "/src/assets/images/memoryCard.png",
+        "originalPrice": 22.99
+      }
+    ]
+  },
+
+  "steps": [
+    {
+      "id": "cameras",
+      "stepNumber": 1,
+      "title": "Choose your cameras",
+      "icon": "Webcam",
+      "nextLabel": "Next: Choose your plan"
+    },
+    {
+      "id": "plan",
+      "stepNumber": 2,
+      "title": "Choose your plan",
+      "icon": "ShieldCheck",
+      "nextLabel": "Next: Choose your sensors"
+    },
+    {
+      "id": "sensors",
+      "stepNumber": 3,
+      "title": "Choose your sensors",
+      "icon": "Radio",
+      "nextLabel": "Next: Add extra protection"
+    },
+    {
+      "id": "extraProtection",
+      "stepNumber": 4,
+      "title": "Add extra protection",
+      "icon": "Building",
+      "nextLabel": null
+    }
+  ]
+}
