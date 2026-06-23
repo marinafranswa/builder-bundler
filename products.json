@@ -6,9 +6,10 @@
         "name": "Wyze Cam v4",
         "description": "The clearest Wyze Cam ever made.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Cam v4.png",
+        "image": "/src/assets/images/WyzeCamV4.png",
         "originalPrice": 35.98,
         "discountPrice": 27.98,
+        "quantity":1,
         "discountPercent": "Save 22%",
         "colors": [
           {
@@ -33,9 +34,10 @@
         "name": "Wyze Cam Pan v3",
         "description": "360° pan and 180° tilt security camera.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Cam Pan v3.png",
+        "image": "/src/assets/images/WyzeCamPanV3.png",
         "originalPrice": 39.98,
         "discountPrice": 34.98,
+        "quantity": 1,
         "discountPercent": "Save 12%",
         "colors": [
           {
@@ -55,15 +57,16 @@
         "name": "Wyze Cam Floodlight v2",
         "description": "2K floodlight camera with a 160° wide-angle view for your garage.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Cam Floodlight v2.png",
+        "image": "/src/assets/images/WyzeCamFloodlightV2.png",
         "originalPrice": 89.98,
         "discountPrice": 69.98,
+        "quantity": 1,
         "discountPercent": "Save 22%",
         "colors": [
           {
             "id": "white",
             "label": "White",
-            "image": "/src/assets/images/Wyze Cam Floodlight v2.png"
+            "image": "/src/assets/images/WyzeCamFloodlightV2.png"
           },
           {
             "id": "black",
@@ -77,21 +80,24 @@
         "name": "Wyze Duo Cam Doorbell",
         "description": "Two cameras. Two views. Double the porch protection.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Duo Cam Doorbell.png",
-        "originalPrice": 69.98
+        "image": "/src/assets/images/WyzeDuoCamDoorbell.png",
+        "originalPrice": 69.98,
+        "quantity": 1
       },
       {
         "id": 5,
         "name": "Wyze Battery Cam Pro",
         "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Battery Cam Pro.png",
+        "image": "/src/assets/images/WyzeBatteryCamPro.png",
         "originalPrice": 89.98,
+        "quantity": 1,
+
         "colors": [
           {
             "id": "white",
             "label": "White",
-            "image": "/src/assets/images/Wyze Battery Cam Pro.png"
+            "image": "/src/assets/images/WyzeBatteryCamPro.png"
           },
           {
             "id": "black",
@@ -110,14 +116,17 @@
         "learnMoreUrl": "#",
         "originalPrice": 12.99,
         "discountPrice": 9.99,
-        "discountPercent": "Save 25%"
+        "discountPercent": "Save 25%",
+                "quantity":1
+
       },
       {
         "id": 7,
         "name": "Cam Plus",
         "description": "14-day cloud storage and smart detection for a single camera.",
         "learnMoreUrl": "#",
-        "originalPrice": 4.99
+        "originalPrice": 4.99,
+        "quantity": 1
       },
       {
         "id": 8,
@@ -125,7 +134,8 @@
         "description": "12-hour event history with basic motion alerts. No subscription required.",
         "learnMoreUrl": "#",
         "originalPrice": 0,
-          "discountPercent": "Free"
+        "discountPercent": "Free",
+        "quantity": 1
       }
     ],
 
@@ -135,35 +145,38 @@
         "name": "Wyze Sense Motion Sensor",
         "description": "Detects motion and triggers your connected cameras and alerts.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
-        "originalPrice": 29.99
+        "image": "/src/assets/images/WyzeSenseMotionSensor.png",
+        "originalPrice": 29.99,
+        "quantity": 1
       },
       {
         "id": 10,
         "name": "Wyze Sense Hub (Required)",
         "description": "Connects all your sensors to the Wyze app.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Sense Hub.png",
+        "image": "/src/assets/images/WyzeSenseHub.png",
         "originalPrice": 29.92,
         "discountPrice": 0,
-        "discountPercent": "Free"
-
+        "discountPercent": "Free",
+        "quantity": 1
       },
       {
         "id": 11,
         "name": "Wyze Sense Entry Sensor",
         "description": "Know the moment a door or window opens.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
-        "originalPrice": 29.98
+        "image": "/src/assets/images/WyzeSenseMotionSensor.png",
+        "originalPrice": 29.98,
+        "quantity": 1
       },
       {
         "id": 12,
         "name": "Wyze Leak Sensor",
         "description": "Get notified the instant water is detected.",
         "learnMoreUrl": "#",
-        "image": "/src/assets/images/Wyze Sense Motion Sensor.png",
-        "originalPrice": 24.99
+        "image": "/src/assets/images/WyzeSenseMotionSensor.png",
+        "originalPrice": 24.99,
+        "quantity": 1
       }
     ],
 
@@ -174,7 +187,8 @@
         "description": "Local backup storage for your cameras.",
         "learnMoreUrl": "#",
         "image": "/src/assets/images/memoryCard.png",
-        "originalPrice": 20.98
+        "originalPrice": 20.98,
+        "quantity": 1
       },
       {
         "id": 14,
@@ -183,16 +197,18 @@
         "learnMoreUrl": "#",
         "image": "/src/assets/images/memoryCard.png",
         "originalPrice": 79.99,
+        "quantity": 1,
+
         "colors": [
           {
             "id": "silver",
             "label": "Silver",
-            "image": "/images/lock-bolt-silver.png"
+            "color": "bg-slate-500"
           },
           {
             "id": "black",
             "label": "Black",
-            "image": "/images/lock-bolt-black.png"
+            "color": "bg-black"
           }
         ]
       },
@@ -202,7 +218,8 @@
         "description": "Control floodlights and outdoor devices from your phone.",
         "learnMoreUrl": "#",
         "image": "/src/assets/images/memoryCard.png",
-        "originalPrice": 24.98
+        "originalPrice": 24.98,
+        "quantity": 1
       },
       {
         "id": 16,
@@ -210,7 +227,8 @@
         "description": "Hear every doorbell ring, even when your phone's out of reach.",
         "learnMoreUrl": "#",
         "image": "/src/assets/images/memoryCard.png",
-        "originalPrice": 22.99
+        "originalPrice": 22.99,
+        "quantity": 1
       }
     ]
   },

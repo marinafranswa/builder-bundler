@@ -1,3 +1,4 @@
+
 export type Product = {
   id: number;
   name: string;
@@ -8,22 +9,9 @@ export type Product = {
   discountPrice?: number;
   discountPercent?: string;
   colors?: Color[];
+  quantity:number
 };
 
-type Color = { id: string; label: string; image: string };
+type Color = { id: string; label: string; image?: string ,color?:string};
 
-export type ProductsByStep = {
-  cameras: Product[];
-  plan: Product[];
-  sensors: Product[];
-  extraProtection: Product[];
-};
 
-export type StepConfig = {
-  key: StepKey;
-  value: string;
-  label: string;
-  icon: React.ReactNode;
-  gridCols: string;
-};
-export type StepKey = keyof ProductsByStep;

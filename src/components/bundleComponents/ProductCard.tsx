@@ -1,37 +1,41 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Minus, Plus, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 import type { Product } from "@/interface/product.interface";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Button } from "../ui/button";
+import PlusMinus from "../common/PlusMinus";
 
 type ProductCardProps = {
   product: Product;
   selected: boolean;
-  onSelect: (id: number) => void;
+  quantity: number;
+  onSelect: () => void;
+  onQuantityChange: (quantity: number) => void;
 };
 
-export default function ProductCard({ product, selected,
-  onSelect }: ProductCardProps) {
-  const [qty, setQty] = useState(1);
-    const [color, setColor] = useState("");
-    const isFree = product.discountPercent == "Free";
-useEffect(() => {
-  if (isFree && !selected) {
-    onSelect(product.id);
-  }
-}, [isFree, selected, product.id, onSelect]);
+export default function ProductCard({
+  product,
+  selected,
+  quantity,
+  onSelect,
+  onQuantityChange,
+}: ProductCardProps) {
+  const [color, setColor] = useState("");
+  const isFree = product.discountPercent == "Free";
+
+
   return (
     <Card
-      onClick={() => onSelect(product.id)}
-      className={`h-full  border-2 cursor-pointer transition-colors ${
+      onClick={onSelect}
+      className={`h-full border-2 cursor-pointer transition-colors text-sm ${
         selected ? "border-indigo-600 bg-indigo-50" : ""
       }`}
     >
-      <CardContent className="flex items-center flex-row lg:flex-col gap-2 p-4 lg:px-2 lg:py-1 h-full">
-        <div className="relative flex items-center justify-center h-28 md:w-1/3 lg:w-full shrink-0">
+      <CardContent className="flex md:items-start lg:items-center flex-col md:justify-around md:flex-row md:flex-wrap lg:flex-col gap-2 md:p-2 lg:p-4 lg:px-2 lg:py-1 h-full">
+        <div className="relative flex lg:items-center lg:justify-center h-28 md:w-1/3 lg:w-full shrink-0">
           {product.discountPercent && (
-            <Badge className="absolute top-1 left-1 bg-indigo-600  rounded-full py-1 text-xs">
+            <Badge className="absolute lg:top-1 lg:left-1 md:left-0.5 md:top-0.5 bg-indigo-600  rounded-full py-1 text-xs">
               {product.discountPercent}
             </Badge>
           )}
@@ -40,7 +44,7 @@ useEffect(() => {
             <img
               src={product.image}
               alt={product.name}
-              className="h-24 md:h-28 object-cover block"
+              className="h-24 md:h-18 lg:h-28 object-cover block"
             />
           ) : (
             <Shield size={40} />
@@ -48,11 +52,11 @@ useEffect(() => {
         </div>
 
         <div className="flex flex-col flex-1 gap-2">
-          <h3 className="text-md lg:text-lg font-semibold leading-tight">
+          <h3 className="text-base lg:text-lg font-semibold leading-tight">
             {product.name}
           </h3>
 
-          <p className="mb-0! text-xs md:text-md text-slate-500 leading-snug">
+          <p className="text-xs md:text-xs lg:text-sm text-slate-500 ">
             {product.description}
             <a
               href={product.learnMoreUrl}
@@ -61,69 +65,63 @@ useEffect(() => {
               Learn More
             </a>
           </p>
+        </div>
 
-          {product.colors && (
-            <div className="flex gap-2 flex-wrap mt-2">
-              {product.colors.map((colour) => (
-                <Button
-                  key={colour.id}
-                  variant="outline"
-                  onClick={() => setColor(colour.id)}
-                  className={`flex items-center gap-1 px-2 py-1 h-8 text-xs ${
-                    color === colour.id
-                      ? "border-emerald-400 bg-emerald-50"
-                      : "border-slate-200"
-                  }`}
-                >
+        {product.colors && (
+          <div className="flex gap-2 lg:flex-wrap mt-2">
+            {product.colors.map((colour) => (
+              <Button
+                key={colour.id}
+                variant="outline"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setColor(colour.id);
+                }}
+                className={`flex items-center gap-1 px-2 py-1 h-8 md:text-[10px] lg:text-xs ${
+                  color === colour.id
+                    ? "border-emerald-400 bg-emerald-50"
+                    : "border-slate-200"
+                }`}
+              >
+                {colour.image ? (
                   <img
                     src={colour.image}
                     alt={colour.label}
                     className="h-4 w-4 object-contain"
                   />
-                  {colour.label}
-                </Button>
-              ))}
-            </div>
-          )}
-
-          <div className="flex items-center justify-between mt-auto">
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                className="h-8 w-8 p-0"
-                disabled={isFree}
-                onClick={() => setQty((q) => Math.max(1, q - 1))}
-              >
-                <Minus className="h-3 w-3" />
+                ) : (
+                  <span
+                    className={`w-2 h-2  rounded-full ${colour.color} `}
+                  ></span>
+                )}
+                {colour.label}
               </Button>
-
-              <span className="w-5 text-center md:font-medium">{qty}</span>
-
-              <Button
-                variant="outline"
-                className="h-8 w-8 p-0"
-                disabled={isFree}
-                onClick={() => setQty((q) => q + 1)}
-              >
-                <Plus className="h-3 w-3" />
-              </Button>
-            </div>
-
-            <div className="flex items-end gap-2 flex-col md:flex-col md:gap-0 md:items-end lg:items-end lg:gap-2 lg:flex-row">
-              {product.discountPercent && (
-                <span className="text-rose-400 line-through text-sm">
-                  ${(product.originalPrice * qty).toFixed(2)}
-                </span>
-              )}
-
-              <span className="text-sm text-slate-500 font-medium md:text-lg md:font-semibold md:text-slate-700 lg:text-sm lg:text-slate-500 lg:font-medium">
-                $
-                {product.discountPrice
-                  ? (product.discountPrice * qty).toFixed(2)
-                  : (product.originalPrice * qty).toFixed(2)}
-              </span>
-            </div>
+            ))}
           </div>
+        )}
+
+        <div className="flex items-center justify-between gap- mt-auto">
+          <PlusMinus
+            quantity={quantity}
+            disabled={isFree}
+            onIncrease={() => onQuantityChange(quantity + 1)}
+            onDecrease={() => onQuantityChange(Math.max(1, quantity - 1))}
+          />
+
+        {isFree?<span className="md:text-sm text-xs lg:text-base font-semibold text-indigo-600">Free</span> :  <div className="flex items-end gap-2 flex-col md:flex-col md:gap-0 md:items-end lg:items-end lg:gap-2 lg:flex-row">
+            {product.discountPercent && (
+              <span className="text-rose-400 line-through text-base">
+                ${(product.originalPrice * quantity).toFixed(2)}
+              </span>
+            )}
+
+            <span className="text-sm text-slate-500 font-medium md:text-lg md:font-semibold md:text-slate-700 lg:text-base lg:text-slate-500 lg:font-medium">
+              $
+              {product.discountPrice
+                ? (product.discountPrice * quantity).toFixed(2)
+                : (product.originalPrice * quantity).toFixed(2)}
+            </span>
+          </div>}
         </div>
       </CardContent>
     </Card>
