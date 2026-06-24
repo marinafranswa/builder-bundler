@@ -71,41 +71,84 @@ export default function App() {
 
     fetchProducts();
   }, []);
+const toggleSelect = (
+  stepKey: StepKey,
+  productId: number,
+  variantId: string,
+) => {
+  setSelectedByStep((prev) => {
+    const variants = prev[stepKey][productId] ?? {};
+    const currentQty = variants[variantId]?.quantity ?? 0;
+    const isSelected = currentQty > 0;
 
-  // Select / unselect product
-  const toggleSelect = (stepKey: StepKey, id: number) => {
-    setSelectedByStep((prev) => ({
+    if (isSelected) {
+      // deselect: remove this variant
+      const restVariants = { ...variants };
+      delete restVariants[variantId];
+
+      if (Object.keys(restVariants).length === 0) {
+        const restProducts = { ...prev[stepKey] };
+        delete restProducts[productId];
+        return { ...prev, [stepKey]: restProducts };
+      }
+
+      return {
+        ...prev,
+        [stepKey]: { ...prev[stepKey], [productId]: restVariants },
+      };
+    }
+
+    // select: add with qty 1
+    return {
       ...prev,
       [stepKey]: {
         ...prev[stepKey],
-        [id]: {
-          selected: !prev[stepKey][id]?.selected,
-          quantity: prev[stepKey][id]?.quantity ?? 1,
-        },
+        [productId]: { ...variants, [variantId]: { quantity: 1 } },
       },
-    }));
-  };
-  
+    };
+  });
+};
 
-  // Update product quantity
-  const setQuantity = (stepKey: StepKey, id: number, quantity: number) => {
-    setSelectedByStep((prev) => {
-      const item = prev[stepKey][id];
+const setQuantity = (
+  stepKey: StepKey,
+  productId: number,
+  variantId: string,
+  quantity: number,
+) => {
+  setSelectedByStep((prev) => {
+    const variants = prev[stepKey][productId] ?? {};
 
-      if (!item) return prev;
+    const product = allProducts[stepKey].find((p) => p.id === productId);
+    const isRequired = product?.name.includes("(Required)");
+    const safeQuantity = isRequired ? Math.max(quantity, 1) : quantity;
+
+    if (safeQuantity <= 0) {
+      if (!variants[variantId]) return prev;
+
+      const restVariants = { ...variants };
+      delete restVariants[variantId];
+
+      if (Object.keys(restVariants).length === 0) {
+        const restProducts = { ...prev[stepKey] };
+        delete restProducts[productId];
+        return { ...prev, [stepKey]: restProducts };
+      }
+
       return {
         ...prev,
-        [stepKey]: {
-          ...prev[stepKey],
-          [id]: {
-            ...item,
-            quantity: Math.max(1, quantity),
-          },
-        },
+        [stepKey]: { ...prev[stepKey], [productId]: restVariants },
       };
-    });
-  };
+    }
 
+    return {
+      ...prev,
+      [stepKey]: {
+        ...prev[stepKey],
+        [productId]: { ...variants, [variantId]: { quantity: safeQuantity } },
+      },
+    };
+  });
+};
   // Save selection
   const saveSelectionToStorage = () => {
     try {

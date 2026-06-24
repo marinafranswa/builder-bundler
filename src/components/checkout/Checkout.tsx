@@ -15,7 +15,12 @@ import ShippingRow from "./ShippingRow";
 interface CheckoutProps {
   selectedByStep: SelectedByStep;
   allProducts: ProductsByStep;
-  onQuantityChange: (stepKey: StepKey, id: number, quantity: number) => void;
+  onQuantityChange: (
+    stepKey: StepKey,
+    productId: number,
+    variantId: string,
+    quantity: number,
+  ) => void;
   onSave: () => boolean;
 }
 
@@ -81,25 +86,32 @@ sections.forEach((section) => {
               <div key={section.key}>
                 {i > 0 && <Separator className="my-2" />}
                 <h5 className="text-slate-400 text-xs uppercase mb-0.5">
-                  {section.label}
+                  {section.value}
                 </h5>
-                {section.products.map(({ product, quantity }) => (
-                  <CartRow
-                    key={product.id}
-                    product={product}
-                    quantity={quantity}
-                    onQuantityChange={(qty) =>
-                      onQuantityChange(section.key, product.id, qty)
-                    }
-                  />
-                ))}
+                {section.products.map(
+                  ({ product, variantId, color, quantity }) => (
+                    <CartRow
+                      key={`${product.id}-${variantId}`}
+                      product={product}
+                      variantLabel={color?.label}
+                      quantity={quantity}
+                      onQuantityChange={(qty) =>
+                        onQuantityChange(
+                          section.key,
+                          product.id,
+                          variantId,
+                          qty,
+                        )
+                      }
+                    />
+                  ),
+                )}
                 <ShippingRow />
               </div>
             ))
           )}
         </div>
         <div className="flex flex-col gap-2">
-
           <div className="flex items-center  gap-4">
             <div className="w-20 h-20 lg:w-28 lg:h-28 shrink-0">
               <img

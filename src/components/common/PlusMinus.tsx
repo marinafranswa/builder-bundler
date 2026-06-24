@@ -13,7 +13,7 @@ export default function PlusMinus({
   quantity,
   onIncrease,
   onDecrease,
-  min = 1,
+
   disabled = false,
 }: PlusMinusProps) {
   return (
@@ -21,9 +21,8 @@ export default function PlusMinus({
       <Button
         variant="outline"
         className="lg:h-8 lg:w-8 w-6 h-6 rounded-sm p-0"
-        disabled={disabled || quantity <= min}
-        onClick={(e) => {
-          e.stopPropagation();
+        disabled={disabled}
+        onClick={() => {
           onDecrease();
         }}
       >
@@ -38,8 +37,7 @@ export default function PlusMinus({
         variant="outline"
         className="lg:h-8 lg:w-8 w-6 h-6 rounded-sm p-0"
         disabled={disabled}
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={() => {
           onIncrease();
         }}
       >

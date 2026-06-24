@@ -15,14 +15,11 @@ export type StepConfig = {
   icon: LucideIcon;
   gridCols: string;
 };
+
 export type StepKey = keyof ProductsByStep;
 
-export type SelectionMap = Record<
-  number,
-  {
-    selected: boolean;
-    quantity: number;
-    color?: string;
-  }
->;
+export const DEFAULT_VARIANT = "default";
+
+export type SelectionMap = Record<number, Record<string, { quantity: number }>>;
+
 export type SelectedByStep = Record<StepKey, SelectionMap>;
