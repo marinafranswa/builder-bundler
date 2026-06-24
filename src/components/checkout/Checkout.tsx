@@ -11,6 +11,7 @@ import type {
 } from "@/interface/selection.interface";
 import { getSelectedSections } from "@/service/getSelection";
 import ShippingRow from "./ShippingRow";
+import satisfactionCard from "@/assets/images/satisfaction-card.png";
 
 interface CheckoutProps {
   selectedByStep: SelectedByStep;
@@ -113,7 +114,7 @@ export default function Checkout({
           <div className="flex items-center  gap-4">
             <div className="w-20 h-20 lg:w-28 lg:h-28 shrink-0">
               <img
-                src="/src/assets/images/satisfaction-card.png"
+                src={satisfactionCard}
                 className="w-full h-full object-contain"
                 alt="satisfaction-card"
               />

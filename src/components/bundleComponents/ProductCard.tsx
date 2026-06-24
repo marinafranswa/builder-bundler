@@ -34,8 +34,8 @@ export default function ProductCard({
         selected ? "border-indigo-600 bg-indigo-50" : ""
       }`}
     >
-      <CardContent className="flex md:items-start lg:items-center flex-col md:justify-around md:flex-row md:flex-wrap lg:flex-col gap-2 md:p-2 lg:p-4 lg:px-2 lg:py-1 h-full">
-        <div className="relative flex lg:items-center lg:justify-center h-28 md:w-1/3 lg:w-full shrink-0">
+      <CardContent className="flex md:items-start lg:items-center flex-col justify-center md:flex-row md:flex-wrap lg:flex-col gap-2 md:p-2 lg:p-4 lg:px-2 lg:py-1 h-full">
+        <div className="relative flex lg:items-center lg:justify-center h-28 md:h-fit md:w-1/3 lg:w-full shrink-0">
           {product.discountPercent && (
             <Badge className="absolute lg:top-1 lg:left-1 md:left-0.5 md:top-0.5 bg-indigo-600 rounded-full py-1 text-xs">
               {product.discountPercent}
@@ -46,7 +46,7 @@ export default function ProductCard({
               src={product.image}
               alt={product.name}
               onClick={() => onSelect(activeVariantId)}
-              className="h-24 md:h-18 lg:h-28 object-cover block"
+              className="h-24 md:h-fit lg:h-28 object-cover block"
             />
           ) : (
             <Shield size={40} />
@@ -107,7 +107,7 @@ export default function ProductCard({
             })}
           </div>
         )}
-        <div className="flex items-center justify-between gap- mt-auto">
+        <div className="flex items-center justify-between gap-8 mt-auto">
           <PlusMinus
             quantity={quantity}
             disabled={isFree || !selected}
@@ -124,15 +124,20 @@ export default function ProductCard({
             <div className="flex items-end gap-2 flex-col md:flex-col md:gap-0 md:items-end lg:items-end lg:gap-2 lg:flex-row">
               {product.discountPercent && (
                 <span className="text-rose-400 line-through text-base">
-                  ${(product.originalPrice * quantity).toFixed(2)}
+                  $
+                  {(
+                    product.originalPrice * (quantity > 0 ? quantity : 1)
+                  ).toFixed(2)}
                 </span>
               )}
               <span className="text-sm text-slate-500 font-medium md:text-lg md:font-semibold md:text-slate-700 lg:text-base lg:text-slate-500 lg:font-medium">
                 $
-                {(product.discountPrice
-                  ? product.discountPrice
-                  : product.originalPrice * quantity
-                ).toFixed(2)}
+                {quantity === 0
+                  ? (product.discountPrice ?? product.originalPrice).toFixed(2)
+                  : (
+                      (product.discountPrice ?? product.originalPrice) *
+                      quantity
+                    ).toFixed(2)}
               </span>
             </div>
           )}
