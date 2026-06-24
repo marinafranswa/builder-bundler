@@ -9,13 +9,7 @@ export const STEP_CONFIG: StepConfig[] = [
     icon: Webcam,
     gridCols: "grid-cols-1 md:grid-cols-2 lg:grid-cols-5",
   },
-  {
-    key: "plan",
-    value: "Home monitoring plan",
-    label: "Choose your plan",
-    icon: Shield,
-    gridCols: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-  },
+
   {
     key: "sensors",
     value: "sensors",
@@ -29,5 +23,12 @@ export const STEP_CONFIG: StepConfig[] = [
     label: "Add extra protection",
     icon: Grid3X3,
     gridCols: "grid-cols-1 md:grid-cols-2 lg:grid-cols-4",
+  },
+  {
+    key: "plan",
+    value: "Home monitoring plan",
+    label: "Choose your plan",
+    icon: Shield,
+    gridCols: "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
   },
 ];

@@ -49,11 +49,16 @@ npm run preview
 
 ```text
 src/
+├── App.tsx                  # top-level state: products, selections, persistence
 ├── components/
-├── interfaces/
-├── services/
-├── assets/
-└── App.tsx
+│   ├── bundleComponents/    # the accordion, product cards, the "Next" button
+│   ├── checkout/            # the review panel, cart rows, shipping row
+│   ├── common/              # the +/- quantity stepper
+│   └── ui/                  # shadcn primitives
+├── interface/                # types for products, selections, steps
+├── service/                  # fetching products.json, deriving review-panel sections
+└── assets/
+products.json                 # all product + step data
 ```
 
 ### Architecture

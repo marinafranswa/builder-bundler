@@ -119,14 +119,14 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-Light.otf') format('otf');
+  src: url('./assets/fonts/Gilroy-Light.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('./assets/fonts/Gilroy-ExtraBold.otf') format('otf');
+  src: url('./assets/fonts/Gilroy-ExtraBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }

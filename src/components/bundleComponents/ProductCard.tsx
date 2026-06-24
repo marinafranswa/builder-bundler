@@ -35,7 +35,10 @@ export default function ProductCard({
       }`}
     >
       <CardContent className="flex md:items-start lg:items-center flex-col justify-center md:flex-row md:flex-wrap lg:flex-col gap-2 md:p-2 lg:p-4 lg:px-2 lg:py-1 h-full">
-        <div className="relative flex lg:items-center lg:justify-center h-28 md:h-fit md:w-1/3 lg:w-full shrink-0">
+        <div
+          onClick={() => onSelect(activeVariantId)}
+          className="relative flex lg:items-center lg:justify-center h-28 md:h-fit md:w-1/3 lg:w-full shrink-0"
+        >
           {product.discountPercent && (
             <Badge className="absolute lg:top-1 lg:left-1 md:left-0.5 md:top-0.5 bg-indigo-600 rounded-full py-1 text-xs">
               {product.discountPercent}
@@ -45,7 +48,6 @@ export default function ProductCard({
             <img
               src={product.image}
               alt={product.name}
-              onClick={() => onSelect(activeVariantId)}
               className="h-24 md:h-fit lg:h-28 object-cover block"
             />
           ) : (
@@ -55,7 +57,7 @@ export default function ProductCard({
         <div className="flex flex-col flex-1 gap-2">
           <h3
             className="text-base lg:text-lg font-semibold leading-tight"
-            onClick={() => onSelect(activeVariantId)}
+          
           >
             {product.name}
           </h3>
@@ -110,7 +112,7 @@ export default function ProductCard({
         <div className="flex items-center justify-between gap-8 mt-auto">
           <PlusMinus
             quantity={quantity}
-            disabled={isFree || !selected}
+            disabled={isFree}
             onIncrease={() => onQuantityChange(activeVariantId, quantity + 1)}
             onDecrease={() =>
               onQuantityChange(activeVariantId, Math.max(0, quantity - 1))

@@ -85,7 +85,16 @@ export default function Checkout({
               <div key={section.key}>
                 {i > 0 && <Separator className="my-2" />}
                 <h5 className="text-slate-400 text-xs uppercase mb-0.5">
-                  {section.value}
+                  {section.value === "Home monitoring plan" ? (
+                    <>
+                      <span className="md:block hidden">Plan</span>
+                      <span className="md:hidden">
+                        Home Monitoring Plan
+                      </span>
+                    </>
+                  ) : (
+                    section.value
+                  )}
                 </h5>
                 {section.products.map(
                   ({ product, variantId, color, quantity }) => (
