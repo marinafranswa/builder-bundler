@@ -124,7 +124,7 @@ export default function App() {
      const variants = prev[stepKey][productId] ?? {};
 
      const product = allProducts[stepKey].find((p) => p.id === productId);
-     const isRequired = product?.name.includes("(Required)");
+     const isRequired = product?.required;
      const safeQuantity = isRequired ? Math.max(quantity, 1) : quantity;
 
      if (safeQuantity <= 0) {

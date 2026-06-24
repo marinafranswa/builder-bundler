@@ -38,7 +38,7 @@ export default function Builder({
   onToggleSelect,
   onQuantityChange,
 }: BuilderProps) {
-  const [openStep, setOpenStep] = useState<string>(STEP_CONFIG[0].value);
+  const [openStep, setOpenStep] = useState<string>(STEP_CONFIG[0].key);
   const goToStep = (targetValue: string) => setOpenStep(targetValue);
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function Builder({
         return (
           <AccordionItem
             key={step.key}
-            value={step.value}
+            value={step.key}
             className="group rounded-lg transition-colors data-[state=open]:bg-indigo-50"
           >
             <AccordionTrigger className="hover:no-underline px-4 py-2 [&>svg]:stroke-indigo-700">
@@ -113,10 +113,11 @@ export default function Builder({
 
               <div className="flex justify-center mt-2 gap-2">
                 {index < STEP_CONFIG.length - 1 && (
+                
                   <CommonBtn
-                    value={STEP_CONFIG[index + 1].value}
+                    value={STEP_CONFIG[index + 1].key} 
                     label={`Next: ${STEP_CONFIG[index + 1].label}`}
-                    onClick={() => goToStep(STEP_CONFIG[index + 1].value)}
+                    onClick={() => goToStep(STEP_CONFIG[index + 1].key)} 
                   />
                 )}
               </div>
