@@ -127,7 +127,7 @@ export default function App() {
       const isRequired = product?.name.includes("(Required)");
       const safeQuantity = isRequired ? Math.max(quantity, 1) : quantity;
 
-      if (safeQuantity <= 0) {
+      if (product?.required) {
         if (!variants[variantId]) return prev;
 
         const restVariants = { ...variants };

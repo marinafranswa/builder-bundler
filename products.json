@@ -158,7 +158,8 @@
         "originalPrice": 29.92,
         "discountPrice": 0,
         "discountPercent": "Free",
-        "quantity": 1
+        "quantity": 1,
+        "required": true
       },
       {
         "id": 11,

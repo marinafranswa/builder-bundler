@@ -9,7 +9,8 @@ export type Product = {
   discountPrice?: number;
   discountPercent?: string;
   colors?: Color[];
-  quantity:number
+  quantity: number;
+  required?: boolean;
 };
 
 type Color = { id: string; label: string; image?: string ,color?:string};

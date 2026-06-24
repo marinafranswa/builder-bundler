@@ -43,11 +43,10 @@ export default function Builder({
 
   useEffect(() => {
     allProducts.sensors.forEach((product) => {
-      const isRequired = product.name.includes("(Required)");
       const hasSelection =
         Object.keys(selectedByStep.sensors[product.id] ?? {}).length > 0;
 
-      if (isRequired && !hasSelection) {
+      if (product.required && !hasSelection) {
         const variantId = product.colors?.[0]?.id ?? DEFAULT_VARIANT;
         onQuantityChange("sensors", product.id, variantId, 1);
       }
