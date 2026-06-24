@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 import type { Product } from "./product.interface";
 
 export type ProductsByStep = {
@@ -8,13 +7,6 @@ export type ProductsByStep = {
   extraProtection: Product[];
 };
 
-export type StepConfig = {
-  key: StepKey;
-  value: string;
-  label: string;
-  icon: LucideIcon;
-  gridCols: string;
-};
 
 export type StepKey = keyof ProductsByStep;
 
