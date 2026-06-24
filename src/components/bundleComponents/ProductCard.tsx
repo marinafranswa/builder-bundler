@@ -55,10 +55,7 @@ export default function ProductCard({
           )}
         </div>
         <div className="flex flex-col flex-1 gap-2">
-          <h3
-            className="text-base lg:text-lg font-semibold leading-tight"
-          
-          >
+          <h3 className="text-base lg:text-lg font-semibold leading-tight">
             {product.name}
           </h3>
           <p className="text-xs md:text-xs lg:text-sm text-slate-500 ">
@@ -132,7 +129,7 @@ export default function ProductCard({
                   ).toFixed(2)}
                 </span>
               )}
-              <span className="text-sm text-slate-500 font-medium md:text-lg md:font-semibold md:text-slate-700 lg:text-base lg:text-slate-500 lg:font-medium">
+              <span className="text-sm text-slate-500 font-medium md:text-lg md:font-semibold md:text-slate-700 lg:text-base lg:text-slate-500 ">
                 $
                 {quantity === 0
                   ? (product.discountPrice ?? product.originalPrice).toFixed(2)

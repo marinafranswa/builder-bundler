@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Card } from "../ui/card";
 import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
@@ -31,24 +31,30 @@ export default function Checkout({
   onQuantityChange,
   onSave,
 }: CheckoutProps) {
-  let originalTotal = 0;
-  let discountedTotal = 0;
   const sections = getSelectedSections(
     STEP_CONFIG,
     allProducts,
     selectedByStep,
   );
 
-  sections.forEach((section) => {
-    section.products.forEach(({ product, quantity }) => {
-      const original = product.originalPrice ?? 0;
-      const discounted = product.discountPrice ?? original;
+  const { originalTotal, discountedTotal, totalSavings } = useMemo(() => {
+    let original = 0;
+    let discounted = 0;
 
-      originalTotal += original * quantity;
-      discountedTotal += discounted * quantity;
+    sections.forEach((section) => {
+      section.products.forEach(({ product, quantity }) => {
+        original += (product.originalPrice ?? 0) * quantity;
+        discounted +=
+          (product.discountPrice ?? product.originalPrice ?? 0) * quantity;
+      });
     });
-  });
-  const totalSavings = originalTotal - discountedTotal;
+
+    return {
+      originalTotal: original,
+      discountedTotal: discounted,
+      totalSavings: original - discounted,
+    };
+  }, [sections]);
 
   const [justSaved, setJustSaved] = useState(false);
 
@@ -85,7 +91,7 @@ export default function Checkout({
               <div key={section.key}>
                 {i > 0 && <Separator className="my-2" />}
                 <h5 className="text-slate-400 text-xs uppercase mb-0.5">
-                {section.categoryLabel}
+                  {section.categoryLabel}
                 </h5>
                 {section.products.map(
                   ({ product, variantId, color, quantity }) => (

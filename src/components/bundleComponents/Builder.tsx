@@ -69,7 +69,7 @@ export default function Builder({
 
         return (
           <AccordionItem
-            key={step.value}
+            key={step.key}
             value={step.value}
             className="group rounded-lg transition-colors data-[state=open]:bg-indigo-50"
           >
