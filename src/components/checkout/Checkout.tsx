@@ -8,7 +8,7 @@ import type {
   ProductsByStep,
   SelectedByStep,
   StepKey,
-} from "@/interface/selection.interfacs";
+} from "@/interface/selection.interface";
 import { getSelectedSections } from "@/service/getSelection";
 import ShippingRow from "./ShippingRow";
 
@@ -38,22 +38,20 @@ export default function Checkout({
     selectedByStep,
   );
 
+  sections.forEach((section) => {
+    section.products.forEach(({ product, quantity }) => {
+      const original = product.originalPrice ?? 0;
+      const discounted = product.discountPrice ?? original;
 
-sections.forEach((section) => {
-  section.products.forEach(({ product, quantity }) => {
-    const original = product.originalPrice ?? 0;
-    const discounted = product.discountPrice ?? original;
-
-    originalTotal += original * quantity;
-    discountedTotal += discounted * quantity;
+      originalTotal += original * quantity;
+      discountedTotal += discounted * quantity;
+    });
   });
-});
   const totalSavings = originalTotal - discountedTotal;
 
   const [justSaved, setJustSaved] = useState(false);
 
   const handleSaveForLater = () => {
-    
     const success = onSave();
     if (success) {
       setJustSaved(true);
@@ -106,10 +104,10 @@ sections.forEach((section) => {
                     />
                   ),
                 )}
-                <ShippingRow />
               </div>
             ))
           )}
+          <ShippingRow />
         </div>
         <div className="flex flex-col gap-2">
           <div className="flex items-center  gap-4">

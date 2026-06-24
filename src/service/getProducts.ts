@@ -1,4 +1,4 @@
-import type { ProductsByStep } from "@/interface/selection.interfacs";
+import type { ProductsByStep } from "@/interface/selection.interface";
 import axios from "axios";
 
 type ProductsResponse = {

@@ -1,7 +1,5 @@
-
 import { Grid3X3, Shield, Signal, Webcam } from "lucide-react";
-import type { StepConfig } from "./selection.interfacs";
-
+import type { StepConfig } from "./selection.interface";
 
 export const STEP_CONFIG: StepConfig[] = [
   {

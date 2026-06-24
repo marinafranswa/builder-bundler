@@ -5,7 +5,7 @@ import type { Product } from "@/interface/product.interface";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import PlusMinus from "../common/PlusMinus";
-import { DEFAULT_VARIANT } from "@/interface/selection.interfacs";
+import { DEFAULT_VARIANT } from "@/interface/selection.interface";
 
 type ProductCardProps = {
   product: Product;
@@ -15,16 +15,17 @@ type ProductCardProps = {
 };
 
 export default function ProductCard({
-  product,onSelect,
+  product,
+  onSelect,
   variantSelections,
- 
+
   onQuantityChange,
 }: ProductCardProps) {
   const defaultVariantId = product.colors?.[0]?.id ?? DEFAULT_VARIANT;
   const [activeVariantId, setActiveVariantId] = useState(defaultVariantId);
 
-const quantity = variantSelections[activeVariantId]?.quantity ?? 0;
-const selected = Object.values(variantSelections).some((v) => v.quantity > 0);
+  const quantity = variantSelections[activeVariantId]?.quantity ?? 0;
+  const selected = Object.values(variantSelections).some((v) => v.quantity > 0);
   const isFree = product.discountPercent == "Free";
 
   return (
@@ -130,7 +131,7 @@ const selected = Object.values(variantSelections).some((v) => v.quantity > 0);
                 $
                 {(product.discountPrice
                   ? product.discountPrice
-                  : product.originalPrice * 1
+                  : product.originalPrice * quantity
                 ).toFixed(2)}
               </span>
             </div>

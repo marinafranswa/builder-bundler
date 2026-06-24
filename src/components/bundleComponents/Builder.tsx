@@ -13,8 +13,8 @@ import type {
   ProductsByStep,
   SelectedByStep,
   StepKey,
-} from "@/interface/selection.interfacs";
-import { DEFAULT_VARIANT } from "@/interface/selection.interfacs";
+} from "@/interface/selection.interface";
+import { DEFAULT_VARIANT } from "@/interface/selection.interface";
 
 interface BuilderProps {
   allProducts: ProductsByStep;
@@ -113,11 +113,11 @@ export default function Builder({
               </div>
 
               <div className="flex justify-center mt-2 gap-2">
-                {step.key === "cameras" && (
+                {index < STEP_CONFIG.length - 1 && (
                   <CommonBtn
-                    value="sensors"
-                    label="Next:Choose your sensors"
-                    onClick={() => goToStep("sensors")}
+                    value={STEP_CONFIG[index + 1].value}
+                    label={`Next: ${STEP_CONFIG[index + 1].label}`}
+                    onClick={() => goToStep(STEP_CONFIG[index + 1].value)}
                   />
                 )}
               </div>

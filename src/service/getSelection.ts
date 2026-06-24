@@ -1,8 +1,8 @@
 import type {
   ProductsByStep,
   SelectedByStep,
-} from "@/interface/selection.interfacs";
-import { DEFAULT_VARIANT } from "@/interface/selection.interfacs";
+} from "@/interface/selection.interface";
+import { DEFAULT_VARIANT } from "@/interface/selection.interface";
 import type { STEP_CONFIG } from "@/interface/steps.interface";
 
 export const getSelectedSections = (
