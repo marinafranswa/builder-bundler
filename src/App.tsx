@@ -114,46 +114,44 @@ export default function App() {
     });
   };
 
-  const setQuantity = (
-    stepKey: StepKey,
-    productId: number,
-    variantId: string,
-    quantity: number,
-  ) => {
-    setSelectedByStep((prev) => {
-      const variants = prev[stepKey][productId] ?? {};
+ const setQuantity = (
+   stepKey: StepKey,
+   productId: number,
+   variantId: string,
+   quantity: number,
+ ) => {
+   setSelectedByStep((prev) => {
+     const variants = prev[stepKey][productId] ?? {};
 
-      const product = allProducts[stepKey].find((p) => p.id === productId);
-      const isRequired = product?.name.includes("(Required)");
-      const safeQuantity = isRequired ? Math.max(quantity, 1) : quantity;
+     const product = allProducts[stepKey].find((p) => p.id === productId);
+     const isRequired = product?.name.includes("(Required)");
+     const safeQuantity = isRequired ? Math.max(quantity, 1) : quantity;
 
-      if (product?.required) {
-        if (!variants[variantId]) return prev;
+     if (safeQuantity <= 0) {
+       const restVariants = { ...variants };
+       delete restVariants[variantId];
 
-        const restVariants = { ...variants };
-        delete restVariants[variantId];
+       if (Object.keys(restVariants).length === 0) {
+         const restProducts = { ...prev[stepKey] };
+         delete restProducts[productId];
+         return { ...prev, [stepKey]: restProducts };
+       }
 
-        if (Object.keys(restVariants).length === 0) {
-          const restProducts = { ...prev[stepKey] };
-          delete restProducts[productId];
-          return { ...prev, [stepKey]: restProducts };
-        }
+       return {
+         ...prev,
+         [stepKey]: { ...prev[stepKey], [productId]: restVariants },
+       };
+     }
 
-        return {
-          ...prev,
-          [stepKey]: { ...prev[stepKey], [productId]: restVariants },
-        };
-      }
-
-      return {
-        ...prev,
-        [stepKey]: {
-          ...prev[stepKey],
-          [productId]: { ...variants, [variantId]: { quantity: safeQuantity } },
-        },
-      };
-    });
-  };
+     return {
+       ...prev,
+       [stepKey]: {
+         ...prev[stepKey],
+         [productId]: { ...variants, [variantId]: { quantity: safeQuantity } },
+       },
+     };
+   });
+ };
   // Save selection
   const saveSelectionToStorage = () => {
     try {

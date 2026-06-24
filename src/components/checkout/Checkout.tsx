@@ -11,7 +11,7 @@ import type {
 } from "@/interface/selection.interface";
 import { getSelectedSections } from "@/service/getSelection";
 import ShippingRow from "./ShippingRow";
-import satisfactionCard from "@/assets/images/satisfaction-card.png";
+import satisfactionCard from "/images/satisfaction-card.png";
 
 interface CheckoutProps {
   selectedByStep: SelectedByStep;
