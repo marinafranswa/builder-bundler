@@ -11,7 +11,7 @@ import type {
 } from "@/interface/selection.interface";
 import { getSelectedSections } from "@/service/getSelection";
 import ShippingRow from "./ShippingRow";
-import satisfactionCard from "/images/satisfaction-card.png";
+
 
 interface CheckoutProps {
   selectedByStep: SelectedByStep;
@@ -31,12 +31,10 @@ export default function Checkout({
   onQuantityChange,
   onSave,
 }: CheckoutProps) {
-  const sections = getSelectedSections(
-    STEP_CONFIG,
-    allProducts,
-    selectedByStep,
-  );
-
+ const sections = useMemo(
+   () => getSelectedSections(STEP_CONFIG, allProducts, selectedByStep),
+   [allProducts, selectedByStep],
+ );
   const { originalTotal, discountedTotal, totalSavings } = useMemo(() => {
     let original = 0;
     let discounted = 0;
@@ -120,7 +118,7 @@ export default function Checkout({
           <div className="flex items-center  gap-4">
             <div className="w-20 h-20 lg:w-28 lg:h-28 shrink-0">
               <img
-                src={satisfactionCard}
+                src="/images/satisfaction-card.png"
                 className="w-full h-full object-contain"
                 alt="satisfaction-card"
               />
