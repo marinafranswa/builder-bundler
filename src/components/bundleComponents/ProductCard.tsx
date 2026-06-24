@@ -30,15 +30,13 @@ export default function ProductCard({
 
   return (
     <Card
-      className={`h-full border-2 cursor-pointer transition-colors text-sm ${
+      onClick={() => onSelect(activeVariantId)}
+      className={`h-full border-2 cursor-pointer transition-colors  text-sm ${
         selected ? "border-indigo-600 bg-indigo-50" : ""
       }`}
     >
       <CardContent className="flex md:items-start lg:items-center flex-col justify-center md:flex-row md:flex-wrap lg:flex-col gap-2 md:p-2 lg:p-4 lg:px-2 lg:py-1 h-full">
-        <div
-          onClick={() => onSelect(activeVariantId)}
-          className="relative flex lg:items-center lg:justify-center h-28 md:h-fit md:w-1/3 lg:w-full shrink-0"
-        >
+        <div className="relative flex lg:items-center lg:justify-center h-28 md:h-fit md:w-1/3 lg:w-full shrink-0">
           {product.discountPercent && (
             <Badge className="absolute lg:top-1 lg:left-1 md:left-0.5 md:top-0.5 bg-indigo-600 rounded-full py-1 text-xs">
               {product.discountPercent}
@@ -58,9 +56,10 @@ export default function ProductCard({
           <h3 className="text-base lg:text-lg font-semibold leading-tight">
             {product.name}
           </h3>
-          <p className="text-xs md:text-xs lg:text-sm text-slate-500 ">
+          <p className="text-xs md:text-xs px-2 lg:text-sm text-slate-500 ">
             {product.description}
             <a
+              onClick={(e) => e.stopPropagation()}
               href={product.learnMoreUrl}
               className="text-indigo-600 underline"
             >
@@ -77,7 +76,8 @@ export default function ProductCard({
                 <Button
                   key={colour.id}
                   variant="outline"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setActiveVariantId(colour.id);
                   }}
                   className={`relative flex items-center gap-1 px-2 py-1 h-8 md:text-[10px] lg:text-xs ${
@@ -106,7 +106,10 @@ export default function ProductCard({
             })}
           </div>
         )}
-        <div className="flex items-center justify-between gap-8 mt-auto">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="flex items-center justify-between gap-4 mt-auto"
+        >
           <PlusMinus
             quantity={quantity}
             disabled={isFree}
